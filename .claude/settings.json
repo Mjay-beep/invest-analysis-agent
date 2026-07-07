@@ -1,0 +1,56 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch",
+      "mcp__claude_ai_PlayMCP__UsStockInfo-get_stock_info",
+      "mcp__claude_ai_PlayMCP__UsStockInfo-get_financial_statement",
+      "mcp__claude_ai_PlayMCP__UsStockInfo-get_recommendations",
+      "mcp__claude_ai_PlayMCP__UsStockInfo-get_historical_stock_prices",
+      "mcp__claude_ai_PlayMCP__UsStockInfo-get_finance_news",
+      "mcp__claude_ai_PlayMCP__UsStockInfo-get_holder_info",
+      "mcp__claude_ai_PlayMCP__UsStockInfo-get_stock_actions",
+      "Read",
+      "Write(reports/**)",
+      "Write(cache/**)",
+      "Bash(curl -s https://data.sec.gov/*)",
+      "Bash(curl -s https://efts.sec.gov/*)",
+      "Bash(curl -s https://api.usaspending.gov/*)",
+      "Bash(curl -s https://api.stlouisfed.org/*)",
+      "Bash(curl -s https://opendart.fss.or.kr/*)",
+      "Bash(curl -s https://data.krx.co.kr/*)",
+      "Bash(curl -s https://www.reddit.com/*)",
+      "Bash(curl -s https://api.stocktwits.com/*)",
+      "Bash(curl -s https://api.congress.gov/*)",
+      "Bash(python3 *)"
+    ],
+    "deny": [
+      "Bash(rm -rf*)",
+      "Read(.env)",
+      "Read(**/.env)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/report-qa-gate.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/notify-done.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

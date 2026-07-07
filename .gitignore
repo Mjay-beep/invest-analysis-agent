@@ -1,0 +1,24 @@
+# 비밀값 — 절대 커밋 금지
+.env
+**/.env
+!.env.example
+
+# 에이전트 산출물·캐시 (로컬 전용)
+reports/*
+!reports/.gitkeep
+cache/*
+!cache/.gitkeep
+
+# 의존성·빌드
+node_modules/
+server/node_modules/
+__pycache__/
+*.pyc
+
+# OS·에디터
+.DS_Store
+.vscode/
+
+# 생성물 (export/build 산출물 — web/data는 커밋)
+web/preview.html
+node_modules/

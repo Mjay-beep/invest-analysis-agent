@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>투자 분석 Agent</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="hwrap">
+    <div class="brand">투자 분석 Agent <small>리포트 뷰어</small></div>
+    <div class="tabs">
+      <div class="tab active" data-tab="analysis">분석 뷰</div>
+      <div class="tab" data-tab="archive">아카이브</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- 분석 뷰 -->
+  <section id="view-analysis">
+    <div class="runhead">
+      <h1 id="rh-ticker">—</h1>
+      <span class="price" id="rh-price"></span>
+      <span class="meta" id="rh-meta"></span>
+      <span class="runsel">실행: <select id="runsel"></select></span>
+    </div>
+
+    <div class="canvas" id="canvas">
+      <svg class="edges" id="edges" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div class="flow"></div>
+    </div>
+
+    <div class="report" id="report"></div>
+    <div class="disclaimer">본 리포트는 AI가 생성한 정보 제공 목적 자료로 투자 자문이 아니며, 데이터 오류 가능성이 있습니다. 투자 판단과 책임은 본인에게 있습니다.</div>
+  </section>
+
+  <!-- 아카이브 -->
+  <section id="view-archive" class="hide">
+    <div class="runhead"><h1>아카이브</h1><span class="meta">과거 분석 실행 목록</span></div>
+    <div class="arch" id="archive"></div>
+  </section>
+</main>
+
+<!-- 사이드 패널 -->
+<div class="overlay" id="overlay"></div>
+<aside class="panel" id="panel">
+  <div class="panel-head">
+    <span class="pdot" id="paneldot"></span>
+    <strong id="panellabel">상세</strong>
+    <span class="x" id="panelx">×</span>
+  </div>
+  <div class="panel-body" id="panelbody"></div>
+</aside>
+
+<script src="app.js"></script>
+</body>
+</html>
